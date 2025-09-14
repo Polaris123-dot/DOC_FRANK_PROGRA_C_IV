@@ -129,7 +129,7 @@ def main(page: ft.Page):
         spacing=20
     )
 
-    page.add(contenido_principal)
+    page.add(contenido_principal)               
     page.update()
 
 if __name__ == "__main__":

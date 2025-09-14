@@ -1,5 +1,7 @@
 import flet as ft
 import time
+import os
+
 
 def main(page: ft.Page):
     # Configuración de la página
@@ -215,14 +217,37 @@ def main(page: ft.Page):
     
 
 
-    def redirigir_dashboard():
+
+    def redirigir_dashboard(page: ft.Page):
         if not page.web:
-            page.window.close()
-            # Aquí abrirías Dashboard.py
-            mostrar_mensaje("Redirección a Dashboard (modo desktop)", "info")
+            # En lugar de cerrar, navegar al dashboard dentro de la misma ventana
+            try:
+                # Limpiar la página actual y cargar el contenido del dashboard
+                page.clean()
+                
+                # Importar y cargar el contenido del dashboard
+                import sys
+                import os
+                
+                # Agregar la ruta del dashboard al path
+                sys.path.append(r'C:\Users\Joen\Documents\GitHub\DOC_FRANK_PROGRA_C_IV\SIS_VENTAS_FLET_CLAS_03')
+                
+                # Importar las funciones del dashboard
+                from Dashboard import main as dashboard_main
+                
+                # Ejecutar la función principal del dashboard
+                dashboard_main(page)
+                
+                mostrar_mensaje("¡Dashboard cargado exitosamente!", "success")
+                
+            except Exception as e:
+                print(f"Error al cargar dashboard: {e}")
+                mostrar_mensaje(f"Error: {str(e)}", "error")
         else:
-            # En web, cambiarías el contenido
-            mostrar_mensaje("Redirección a Dashboard (modo web)", "info")
+            # Para modo web
+            page.route = "/dashboard"
+            page.update()
+            mostrar_mensaje("Redirección a Dashboard", "info")
     
     # Construir interfaz
     card_login = ft.Container(
