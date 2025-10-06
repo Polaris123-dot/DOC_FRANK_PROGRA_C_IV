@@ -30,7 +30,7 @@ def visitante_view(page: ft.Page, role: str, main_app_function):
 
     def logout(e):
         page.clean()
-        # Vuelve a la función de login en index.py
+        
         main_app_function(page)
 
     # --- 2. LÓGICA DE CONCURRENCIA (THREAD-SAFE) ---
