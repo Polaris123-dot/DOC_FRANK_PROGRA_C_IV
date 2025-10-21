@@ -1,5 +1,4 @@
 import flet as ft
-
 from Persona.personas_view import PersonasView  # ← importar aquí
 
 class DashboardView(ft.Container):
@@ -8,9 +7,13 @@ class DashboardView(ft.Container):
         self.page = page
         self.cambiar_vista = cambiar_vista
 
-        titulo = ft.Text("📘 Panel Principal – Sistema de Horarios Marello", size=24, weight="bold")
+        titulo = ft.Text(
+            "📘 Panel Principal – Sistema de Horarios Marello",
+            size=24,
+            weight="bold"
+        )
 
-        tablas = [
+        tablas = [  
             ("Personas", "Datos básicos (base de la identidad)"),
             ("Usuarios", "Cuentas, credenciales, y roles (enlace a personas)"),
             ("Especialidades", "Campos de estudio (Informática, Contabilidad, etc.)"),
@@ -63,11 +66,14 @@ class DashboardView(ft.Container):
             alignment=ft.MainAxisAlignment.START
         )
 
-    # Abre la vista correspondiente
+    # ────────────────────────────────────────────────
+    # MÉTODO PRINCIPAL PARA ABRIR CADA TABLA
+    # ────────────────────────────────────────────────
     def mostrar_tabla(self, nombre_tabla):
         if nombre_tabla == "Personas":
-            personas_vista = PersonasView(self.page, volver_atras=lambda: self.cambiar_vista(DashboardView(self.page, self.cambiar_vista)))
-            self.cambiar_vista(personas_vista)
+            self.abrir_personas()
+        if nombre_tabla == "Usuarios":
+            self.abrir_personas()
         else:
             dlg = ft.AlertDialog(
                 title=ft.Text("Tabla no implementada"),
@@ -77,3 +83,40 @@ class DashboardView(ft.Container):
             self.page.dialog = dlg
             dlg.open = True
             self.page.update()
+
+    # ────────────────────────────────────────────────
+    # GESTIONAR VISTA DE PERSONAS
+    # ────────────────────────────────────────────────
+    def abrir_personas(self):
+        """
+        Carga la vista de Personas con navegación dinámica.
+        Si PersonasView solicita cambiar de vista (por ejemplo, abrir el editor),
+        el mismo callback manejará ambos casos.
+        """
+        def volver_o_navegar(nueva_vista=None):
+            if nueva_vista is None:
+                # Volver al dashboard principal
+                self.cambiar_vista(DashboardView(self.page, self.cambiar_vista))
+            else:
+                # Cambiar a la vista que se pasa (por ejemplo EditarPersonaView)
+                self.cambiar_vista(nueva_vista)
+
+        personas_vista = PersonasView(self.page, volver_atras=volver_o_navegar)
+        self.cambiar_vista(personas_vista)
+        
+    def abrir_personas(self):
+        """
+        Carga la vista de Personas con navegación dinámica.
+        Si PersonasView solicita cambiar de vista (por ejemplo, abrir el editor),
+        el mismo callback manejará ambos casos.
+        """
+        def volver_o_navegar(nueva_vista=None):
+            if nueva_vista is None:
+                # Volver al dashboard principal
+                self.cambiar_vista(DashboardView(self.page, self.cambiar_vista))
+            else:
+                # Cambiar a la vista que se pasa (por ejemplo EditarPersonaView)
+                self.cambiar_vista(nueva_vista)
+
+        personas_vista = PersonasView(self.page, volver_atras=volver_o_navegar)
+        self.cambiar_vista(personas_vista)
