@@ -92,6 +92,8 @@ class PersonasView(ft.Container):
                         )
                     )
                 self.page.update()
+                
+                 
                 print("DEBUG: cargar_personas() end - filas cargadas:", len(self.tabla.rows))
 
             except Exception as e:

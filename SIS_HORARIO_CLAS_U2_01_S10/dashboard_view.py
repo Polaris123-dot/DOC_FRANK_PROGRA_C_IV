@@ -1,5 +1,15 @@
 import flet as ft
-from Persona.personas_view import PersonasView  # ← importar aquí
+from Persona.personas_view import PersonasView
+from Usuario.usuarios_view import UsuariosView
+from Especialidad.especialidades_view import EspecialidadesView
+from Ciclo.ciclos_view import CiclosView
+from Curso.cursos_view import CursosView
+from Aula.aulas_view import AulasView
+from Docente.docentes_view import DocentesView
+from Horario.horarios_view import HorariosView
+from Semana.semanas_view import SemanasView
+from Estructura.estructura_view import EstructuraView
+from Asignacion.asignaciones_view import AsignacionesView
 
 class DashboardView(ft.Container):
     def __init__(self, page, cambiar_vista):
@@ -72,6 +82,26 @@ class DashboardView(ft.Container):
     def mostrar_tabla(self, nombre_tabla):
         if nombre_tabla == "Personas":
             self.abrir_personas()
+        elif nombre_tabla == "Usuarios":
+            self.abrir_usuarios()
+        elif nombre_tabla == "Especialidades":
+            self.abrir_especialidades()
+        elif nombre_tabla == "Ciclos":
+            self.abrir_ciclos()
+        elif nombre_tabla == "Cursos":
+            self.abrir_cursos()
+        elif nombre_tabla == "Aulas":
+            self.abrir_aulas()
+        elif nombre_tabla == "Docentes":
+            self.abrir_docentes()
+        elif nombre_tabla == "Horarios_Base":
+            self.abrir_horarios()
+        elif nombre_tabla == "Semanas":
+            self.abrir_semanas()
+        elif nombre_tabla == "Estructura_Curricular":
+            self.abrir_estructura()
+        elif nombre_tabla == "Asignaciones_Semanales":
+            self.abrir_asignaciones()
         else:
             dlg = ft.AlertDialog(
                 title=ft.Text("Tabla no implementada"),
@@ -83,21 +113,92 @@ class DashboardView(ft.Container):
             self.page.update()
 
     # ────────────────────────────────────────────────
-    # GESTIONAR VISTA DE PERSONAS
+    # MÉTODOS PARA ABRIR CADA VISTA
     # ────────────────────────────────────────────────
     def abrir_personas(self):
-        """
-        Carga la vista de Personas con navegación dinámica.
-        Si PersonasView solicita cambiar de vista (por ejemplo, abrir el editor),
-        el mismo callback manejará ambos casos.
-        """
         def volver_o_navegar(nueva_vista=None):
             if nueva_vista is None:
-                # Volver al dashboard principal
                 self.cambiar_vista(DashboardView(self.page, self.cambiar_vista))
             else:
-                # Cambiar a la vista que se pasa (por ejemplo EditarPersonaView)
                 self.cambiar_vista(nueva_vista)
+        self.cambiar_vista(PersonasView(self.page, volver_atras=volver_o_navegar))
 
-        personas_vista = PersonasView(self.page, volver_atras=volver_o_navegar)
-        self.cambiar_vista(personas_vista)
+    def abrir_usuarios(self):
+        def volver_o_navegar(nueva_vista=None):
+            if nueva_vista is None:
+                self.cambiar_vista(DashboardView(self.page, self.cambiar_vista))
+            else:
+                self.cambiar_vista(nueva_vista)
+        self.cambiar_vista(UsuariosView(self.page, volver_atras=volver_o_navegar))
+
+    def abrir_especialidades(self):
+        def volver_o_navegar(nueva_vista=None):
+            if nueva_vista is None:
+                self.cambiar_vista(DashboardView(self.page, self.cambiar_vista))
+            else:
+                self.cambiar_vista(nueva_vista)
+        self.cambiar_vista(EspecialidadesView(self.page, volver_atras=volver_o_navegar))
+
+    def abrir_ciclos(self):
+        def volver_o_navegar(nueva_vista=None):
+            if nueva_vista is None:
+                self.cambiar_vista(DashboardView(self.page, self.cambiar_vista))
+            else:
+                self.cambiar_vista(nueva_vista)
+        self.cambiar_vista(CiclosView(self.page, volver_atras=volver_o_navegar))
+
+    def abrir_cursos(self):
+        def volver_o_navegar(nueva_vista=None):
+            if nueva_vista is None:
+                self.cambiar_vista(DashboardView(self.page, self.cambiar_vista))
+            else:
+                self.cambiar_vista(nueva_vista)
+        self.cambiar_vista(CursosView(self.page, volver_atras=volver_o_navegar))
+
+    def abrir_aulas(self):
+        def volver_o_navegar(nueva_vista=None):
+            if nueva_vista is None:
+                self.cambiar_vista(DashboardView(self.page, self.cambiar_vista))
+            else:
+                self.cambiar_vista(nueva_vista)
+        self.cambiar_vista(AulasView(self.page, volver_atras=volver_o_navegar))
+
+    def abrir_docentes(self):
+        def volver_o_navegar(nueva_vista=None):
+            if nueva_vista is None:
+                self.cambiar_vista(DashboardView(self.page, self.cambiar_vista))
+            else:
+                self.cambiar_vista(nueva_vista)
+        self.cambiar_vista(DocentesView(self.page, volver_atras=volver_o_navegar))
+
+    def abrir_horarios(self):
+        def volver_o_navegar(nueva_vista=None):
+            if nueva_vista is None:
+                self.cambiar_vista(DashboardView(self.page, self.cambiar_vista))
+            else:
+                self.cambiar_vista(nueva_vista)
+        self.cambiar_vista(HorariosView(self.page, volver_atras=volver_o_navegar))
+
+    def abrir_semanas(self):
+        def volver_o_navegar(nueva_vista=None):
+            if nueva_vista is None:
+                self.cambiar_vista(DashboardView(self.page, self.cambiar_vista))
+            else:
+                self.cambiar_vista(nueva_vista)
+        self.cambiar_vista(SemanasView(self.page, volver_atras=volver_o_navegar))
+
+    def abrir_estructura(self):
+        def volver_o_navegar(nueva_vista=None):
+            if nueva_vista is None:
+                self.cambiar_vista(DashboardView(self.page, self.cambiar_vista))
+            else:
+                self.cambiar_vista(nueva_vista)
+        self.cambiar_vista(EstructuraView(self.page, volver_atras=volver_o_navegar))
+
+    def abrir_asignaciones(self):
+        def volver_o_navegar(nueva_vista=None):
+            if nueva_vista is None:
+                self.cambiar_vista(DashboardView(self.page, self.cambiar_vista))
+            else:
+                self.cambiar_vista(nueva_vista)
+        self.cambiar_vista(AsignacionesView(self.page, volver_atras=volver_o_navegar))
