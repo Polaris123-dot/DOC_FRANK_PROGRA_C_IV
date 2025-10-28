@@ -57,3 +57,4 @@ class EditarSemanaView(ft.Container):
         from Semana.semanas_view import SemanasView
         self.cambiar_vista(SemanasView(self.page, self.cambiar_vista))
 
+

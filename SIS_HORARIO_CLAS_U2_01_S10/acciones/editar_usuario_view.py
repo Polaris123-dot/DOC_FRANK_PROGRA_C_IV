@@ -115,3 +115,5 @@ class EditarUsuarioView(ft.Container):
         from Usuario.usuarios_view import UsuariosView
         self.cambiar_vista(UsuariosView(self.page, self.cambiar_vista))
 
+
+

@@ -123,3 +123,5 @@ class CursosView(ft.Container):
         dlg.open = False
         self.page.update()
 
+
+

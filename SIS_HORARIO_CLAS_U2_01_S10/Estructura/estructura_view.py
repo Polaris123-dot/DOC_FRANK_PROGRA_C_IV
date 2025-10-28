@@ -123,3 +123,4 @@ class EstructuraView(ft.Container):
         dlg.open = False
         self.page.update()
 
+

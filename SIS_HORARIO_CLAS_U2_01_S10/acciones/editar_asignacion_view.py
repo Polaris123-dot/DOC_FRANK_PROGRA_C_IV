@@ -63,3 +63,4 @@ class EditarAsignacionView(ft.Container):
         from Asignacion.asignaciones_view import AsignacionesView
         self.cambiar_vista(AsignacionesView(self.page, self.cambiar_vista))
 
+

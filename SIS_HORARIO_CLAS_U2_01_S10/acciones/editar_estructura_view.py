@@ -61,3 +61,4 @@ class EditarEstructuraView(ft.Container):
         from Estructura.estructura_view import EstructuraView
         self.cambiar_vista(EstructuraView(self.page, self.cambiar_vista))
 
+

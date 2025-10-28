@@ -60,3 +60,4 @@ class EditarDocenteView(ft.Container):
         from Docente.docentes_view import DocentesView
         self.cambiar_vista(DocentesView(self.page, self.cambiar_vista))
 
+

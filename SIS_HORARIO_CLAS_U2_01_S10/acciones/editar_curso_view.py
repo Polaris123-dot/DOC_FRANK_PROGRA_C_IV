@@ -56,3 +56,5 @@ class EditarCursoView(ft.Container):
         from Curso.cursos_view import CursosView
         self.cambiar_vista(CursosView(self.page, self.cambiar_vista))
 
+
+

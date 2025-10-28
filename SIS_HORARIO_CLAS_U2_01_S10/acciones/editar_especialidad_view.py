@@ -88,3 +88,4 @@ class EditarEspecialidadView(ft.Container):
         from Especialidad.especialidades_view import EspecialidadesView
         self.cambiar_vista(EspecialidadesView(self.page, self.cambiar_vista))
 
+

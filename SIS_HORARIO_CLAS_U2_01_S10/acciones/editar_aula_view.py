@@ -56,3 +56,4 @@ class EditarAulaView(ft.Container):
         from Aula.aulas_view import AulasView
         self.cambiar_vista(AulasView(self.page, self.cambiar_vista))
 
+

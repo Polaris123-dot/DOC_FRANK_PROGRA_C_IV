@@ -57,3 +57,4 @@ class EditarHorarioView(ft.Container):
         from Horario.horarios_view import HorariosView
         self.cambiar_vista(HorariosView(self.page, self.cambiar_vista))
 
+

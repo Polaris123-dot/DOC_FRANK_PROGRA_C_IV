@@ -69,3 +69,4 @@ class EditarCicloView(ft.Container):
         from Ciclo.ciclos_view import CiclosView
         self.cambiar_vista(CiclosView(self.page, self.cambiar_vista))
 
+

@@ -123,3 +123,4 @@ class SemanasView(ft.Container):
         dlg.open = False
         self.page.update()
 
+
